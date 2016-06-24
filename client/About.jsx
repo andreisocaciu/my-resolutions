@@ -1,13 +1,21 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 export default class AccountsUI extends Component {
-    setVar() {
+    setVar () {
         Session.set('Meteor.loginButtons.dropdownVisible', true);
     }
 
-    render() {
+    render () {
         return (
-            <div>
+            <ReactCSSTransitionGroup
+                component="div"
+                transitionName="route"
+                transitionAppearTimeout={600}
+                transitionEnterTimeout={600}
+                transitionLeaveTimeout={400}
+                transitionAppear={true}>
+
                 <h1>About Us</h1>
                 <p>Mumblecore skateboard gentrify echo park. Bushwick vinyl actually, pickled retro single-origin coffee
                     poutine selvage four dollar toast fashion axe farm-to-table VHS portland echo park. Trust fund
@@ -23,7 +31,8 @@ export default class AccountsUI extends Component {
                     tumblr normcore venmo jean shorts craft beer flannel kickstarter vegan.</p>
 
                 <button onClick={this.setVar}>Sign Up</button>
-            </div>
+
+            </ReactCSSTransitionGroup>
         );
     }
 }
